@@ -40,6 +40,7 @@ Run the application: python app.py
 
 The main requirements should be :
 Flask==2.0.1
+
 language_tool_python==2.5.3
 
 
