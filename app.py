@@ -19,7 +19,7 @@ def fix_sentence(text):
 # Create a Flask application instance
 app = Flask(__name__)
 # Set a secret key for the application, which is necessary for Flask's session functionality.
-# You should replace 'your_secret_key' with your own secret key.
+# You should replace 'your_secret_key' with your own secret key, not needed here, but crucial for production environments.
 app.config['SECRET_KEY'] = 'your_secret_key'
 
 # Define the route for the application's root URL.
