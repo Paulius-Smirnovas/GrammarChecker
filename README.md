@@ -3,11 +3,11 @@ This repository contains an exam exercise from Paulius Smirnovas from DIEf-21 gr
 
 My Cool Flask App
 
-About
+## About
 
 This is a web application that checks the grammar and spelling of a given English text. It uses the Flask framework to serve the web pages, and the language_tool_python library to perform the grammar and spelling checks.
 
-Components
+## Components
 
 Flask Web Framework
 
@@ -17,7 +17,7 @@ language_tool_python
 
 language_tool_python is a Python wrapper for LanguageTool. LanguageTool is an open-source spelling and grammar checker for more than 20 languages. In this application, it is used to check the grammar and spelling of the user's input text and suggest corrections.
 
-How the Program Works
+## How the Program Works
 
 app.py
 
@@ -46,7 +46,7 @@ session: It's a built-in object in Flask that allows you to store information sp
 request.form: It's a type of MultiDict object which is used to handle form data sent as POST or PUT request.
 
 
-index.html
+## index.html
 
 This file is the template for the main page of the web application. It contains a form for the user to enter their text, and areas to display the original text, the grammar check results, and the corrected text.
 
@@ -65,7 +65,7 @@ div class="grammar-results": This div contains the results of the grammar check.
 div class="fixed-sentences": This div contains the corrected text.
 
 
-Results
+## Results
 
 When a user inputs text and submits the form, the text is sent to the server where it is checked for grammar and spelling errors. The server then returns the original text, a list of the errors, and the corrected text. This information is displayed to the user on the webpage.
 
@@ -73,7 +73,7 @@ The user can then choose to clear the output, toggle a rainbow effect on the out
 
 
 
-Requirements
+## Requirements
 
 Python 3.6 or higher
 
@@ -88,8 +88,6 @@ Clone this repository
 Install the requirements: pip install -r requirements.txt
 
 Run the application: python app.py
-
-
 
 
 The main requirements should be :
