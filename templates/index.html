@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Cool Flask App</title>
+    <style>
+        /* Define the general styles for the body of the webpage */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #c8e9e5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        /* Define the styles for the form */
+        form {
+            background-color: #75e8da;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        /* Define the styles for the text input field */
+        input[type="text"] {
+            width: 97%;
+            height: 30px;
+            margin-right: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            padding: 0 10px;
+        }
+        /* Define the styles for the submit button and the clear button */
+        input[type="submit"], button {
+            height: 34px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0;
+        }
+        /* Define the hover styles for the submit button and the clear button */
+        input[type="submit"]:hover, button:hover {
+            background-color: #0056b3;
+        }
+        /* Define the styles for the paragraph elements */
+        p {
+            margin-top: 20px;
+            color: white;
+            font-weight: bold;
+            border-radius: 5px;
+            padding: 10px;
+            background: black;
+        }
+        /* Define the rainbow effect animation */
+        .rainbow-effect {
+            animation: rainbow 2s linear infinite;
+            color: white;
+        }
+        /* Define the keyframes for the rainbow effect animation */
+        @keyframes rainbow {
+            0% {color: red;}
+            14% {color: orange;}
+            28% {color: yellow;}
+            42% {color: lime;}
+            57% {color: blue;}
+            71% {color: indigo;}
+            85% {color: violet;}
+            100% {color: red;}
+        }
+        /* Define the styles for the container div */
+		.container {
+			width: 70%;  /* Changed from 300px to 70% */
+			/* height: 50%; Commented out to allow the container to expand vertically based on its content */
+			max-width: 800px;  /* Optional: Set a max-width if you don't want the form to be too wide on large screens */
+			background-color: #fff;
+			padding: 20px;
+			border-radius: 8px;
+			box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+			margin: auto;  /* Center the form on the page */
+		}
+
+        /* Define the styles for the button */
+        button {
+            background-color: #dc3545;
+        }
+        /* Define the hover styles for the button */
+        button:hover {
+            background-color: #c82333;
+        }
+        /* Define the styles for the button-container div */
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 10px;
+        }
+        /* Define the styles for the grammar-results div */
+        .grammar-results {
+            height: 300px;
+            overflow-y: auto;
+        }
+        /*  Define the styles for the fixed-sentences div */
+        .fixed-sentences {
+            height: 300px;  /* or any height you want */
+            overflow-y: auto;
+        }
+    </style>
+    <script>
+        /* This JavaScript function clears the output text when called */
+        function clearOutput() {
+            document.getElementById('output').innerHTML = 'Output: ';
+        }
+        /* This JavaScript function toggles the rainbow effect on the output text when called */
+        function toggleRainbowEffect(event) {
+            event.preventDefault();
+            var output = document.getElementById('output');
+            output.classList.toggle('rainbow-effect');
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <form method="POST">
+            <input type="text" name="text" id="text" placeholder="Enter your text here">
+            <div class="button-container">
+                <input type="submit" value="Send">
+                <input type="submit" name="clear" value="Clear Output">
+                <button type="button" onclick="toggleRainbowEffect(event)">Toggle Rainbow Effect</button>
+            </div>
+        </form>
+
+        <h2>Original Text</h2>
+        <p id="output">
+            {{ text }}  <!-- This placeholder will be replaced with the original text entered by the user -->
+        </p>
+
+        <h2>Grammar Check Results</h2>
+        <div class="grammar-results">
+            <table>
+                <!-- This loop will iterate over each match in the matches list and create a table row for each one -->
+                {% for match in matches %}
+                    <tr>
+                        <td>Error: {{ match.error }}</td>
+                        <td>{{ match.msg }}</td>
+                        <td>Suggested correction(s): {{ match.replacements }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <h2>Fixed Text</h2>
+        <div class="fixed-sentences">
+            <p>{{ fixed_text }}</p>  <!-- This placeholder will be replaced with the fixed text -->
+        </div>
+    </div>
+</body>
+</html>
